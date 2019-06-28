@@ -20,7 +20,7 @@ public interface UserRepository {
 
   void add(@Param("list") List<User> users);
 
-  void updateById(@Param("entity") User entity, @Param("owner") Long owner);
+  void updateById(@Param("entity")User entity,@Param("owner") Long owner);
 
-  void deleteByIds(@Param("list") List<Long> ids, @Param("owner") Long aLong);
+  void deleteByIds(@Param("list")List<Long> ids,@Param("owner")  Long aLong);
 }

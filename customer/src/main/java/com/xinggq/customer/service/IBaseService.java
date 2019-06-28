@@ -17,6 +17,6 @@ public interface IBaseService<T> {
    * @param pageSize
    * @return
    */
-  PageInfo<T> selecByPage(Integer pageNum, Integer pageSize);
+  PageInfo<T> selecByPage(Integer pageNum,Integer pageSize);
 
 }

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.xinggq.com.xinggq.customer.repository.InsuranceRepository">
+<mapper namespace="com.xinggq.customer.repository.InsuranceRepository">
 
 	<resultMap type="com.xinggq.customer.entity.Insurance" id="insurance">
 		<id property="id" column="id" />

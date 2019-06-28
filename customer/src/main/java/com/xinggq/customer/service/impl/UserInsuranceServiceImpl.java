@@ -1,8 +1,10 @@
 package com.xinggq.customer.service.impl;
 
 import com.xinggq.customer.dto.UserInsuranceDto;
+import com.xinggq.customer.entity.Company;
 import com.xinggq.customer.entity.Insurance;
 import com.xinggq.customer.entity.User;
+import com.xinggq.customer.entity.UserCompany;
 import com.xinggq.customer.entity.UserInsurance;
 import com.xinggq.customer.repository.InsuranceRepository;
 import com.xinggq.customer.repository.UserInsuranceRepository;

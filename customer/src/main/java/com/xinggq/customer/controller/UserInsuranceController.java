@@ -1,5 +1,6 @@
 package com.xinggq.customer.controller;
 
+import com.xinggq.customer.dto.UserCompanyDto;
 import com.xinggq.customer.dto.UserInsuranceDto;
 import com.xinggq.customer.entity.Insurance;
 import com.xinggq.customer.entity.UserInsurance;
