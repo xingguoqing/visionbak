@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xinggq.com.xinggq.customer.repository.UserCompanyRepository">
+
+  <resultMap type="com.xinggq.customer.entity.UserCompany" id="userCompany">
+    <id property="id" column="id"/>
+    <result column="user_id" property="userId"/>
+    <result column="company_id" property="companyId"/>
+  </resultMap>
+
+
+  <sql id="base_column">
+    id,user_id,company_id
+  </sql>
+
+  <select id="queryByUserId" parameterType="Long" resultMap="userCompany">
+		select
+		<include refid="base_column"/>
+		from user_company
+		where user_id = #{userId}
+  </select>
+
+  <insert id="add" parameterType="com.xinggq.customer.entity.UserCompany" >
+    insert into user_company
+    (user_id,company_id)
+    values
+    (#{userId},#{companyId})
+  </insert>
+
+  <delete id="deleteByCompanyid" parameterType="Long">
+    delete from user_company
+    where company_id =#{companyid}
+  </delete>
+
+
+</mapper>

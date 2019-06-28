@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xinggq.com.xinggq.customer.repository.InsuranceRepository">
+
+	<resultMap type="com.xinggq.customer.entity.Insurance" id="insurance">
+		<id property="id" column="id" />
+		<result column="type" property="type"/>
+		<result column="base_num" property="baseNum"/>
+	</resultMap>
+
+	<sql id="base_column">
+		id,type,base_num
+	</sql>
+
+	<select id="queryById" parameterType="List" resultMap="insurance">
+		select
+		<include refid="base_column"/>
+		from insurance
+		where id in
+		<foreach collection="insuranceIds" index="index" item="item" close=")" open="(" separator=",">
+			#{item}
+		</foreach>
+	</select>
+
+	<insert id="add" parameterType="com.xinggq.customer.entity.Insurance" useGeneratedKeys="true"
+		keyProperty="id">
+    insert into insurance
+    (type,base_num)
+    values
+    (#{type},#{baseNum})
+  </insert>
+
+</mapper>

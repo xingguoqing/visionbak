@@ -1,0 +1,16 @@
+server:
+  port: 8080
+mybatis:
+  mapperLocations: classpath:mapper/*.xml
+
+
+logging:
+  level:
+    com.xinggq.customer.repository: DEBUG
+
+
+#pagehelper:
+#  helperDialect: mysql
+#  reasonable: true
+#  supportMethodsArguments: true
+

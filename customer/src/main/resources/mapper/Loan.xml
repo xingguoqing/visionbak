@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xinggq.com.xinggq.customer.repository.LoanRepository">
+
+	<resultMap type="com.xinggq.customer.entity.Loan" id="loan">
+		<id property="id" column="id" />
+		<result column="type" property="type"/>
+		<result column="amount" property="amount"/>
+	</resultMap>
+
+	<sql id="base_column">
+		id,type,amount
+	</sql>
+
+	<select id="queryById" resultMap="loan">
+		select
+		<include refid="base_column"/>
+		from loan
+		where id in
+		<foreach collection="loanIds" item="item" separator="," open="(" close=")" index="index">
+			#{item}
+		</foreach>
+	</select>
+
+	<insert id="add" parameterType="com.xinggq.customer.entity.Loan" useGeneratedKeys="true"
+		keyProperty="id">
+		insert into loan
+		(type,amount)
+		values
+		(#{type},#{amount})
+
+	</insert>
+
+</mapper>

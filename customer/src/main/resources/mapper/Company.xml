@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xinggq.com.xinggq.customer.repository.CompanyRepository">
+
+  <resultMap type="com.xinggq.customer.entity.Company" id="company">
+    <id property="id" column="id"/>
+    <result column="name" property="name"/>
+    <result column="address" property="address"/>
+  </resultMap>
+
+  <sql id="base_column">
+		id,name,address
+	</sql>
+
+  <select id="querybyId" parameterType="List" resultMap="company">
+    select
+    <include refid="base_column"/>
+    from company
+    where id in
+    <foreach collection="ids" index="index" item="item" close=")" open="(" separator=",">
+      #{item}
+    </foreach>
+  </select>
+
+  <insert id="add" parameterType="com.xinggq.customer.entity.Company" useGeneratedKeys="true"
+    keyProperty="id">
+    insert into company
+    (name,address)
+    values
+    (#{name},#{address})
+  </insert>
+
+  <update id="updateById" parameterType="com.xinggq.customer.entity.Company">
+    update company
+    <set>
+      <if test="name !=null and name!= '' ">
+        name = #{name},
+      </if>
+      <if test="address !=null and address!= '' ">
+        address = #{address},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+
+</mapper>
