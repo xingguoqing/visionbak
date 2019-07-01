@@ -44,7 +44,6 @@ public interface ICommonCode {
    * 分页每页数据量不合法
    */
   String PAGESIZE_LEGAL = "1041";
-
   /**
    * 企业id不能为空
    */
@@ -61,6 +60,14 @@ public interface ICommonCode {
    * 企业信息不存在
    */
   String COMPANY_NOT_EXIST = "1063";
+  /**
+   * 保险类型不合法
+   */
+  String INSURANCE_TYPE_LEGAL = "1070";
+  /**
+   * 保险信息不存在
+   */
+  String INSURANCE_NOT_EXIST = "1071";
   /**
    * 请求数据转换失败
    */

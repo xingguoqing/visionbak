@@ -11,4 +11,12 @@ import java.util.List;
 public interface IInsuranceService {
 
   List<Insurance> queryById(List<String> insuranceIds);
+
+  List<Insurance> queryByCustomerId(String customerId);
+
+  void add(Insurance insurance);
+
+  void deleteById(String id);
+
+  void updateById(Insurance insurance);
 }

@@ -8,10 +8,11 @@
 		<id property="id" column="id" />
 		<result column="type" property="type"/>
 		<result column="base_num" property="baseNum"/>
+		<result column="customer_id" property="customerId"/>
 	</resultMap>
 
 	<sql id="base_column">
-		id,type,base_num
+		id,type,base_num,customer_id
 	</sql>
 
 	<select id="queryById" parameterType="List" resultMap="insurance">
@@ -27,9 +28,37 @@
 	<insert id="add" parameterType="com.xinggq.customer.entity.Insurance" useGeneratedKeys="true"
 		keyProperty="id">
     insert into insurance
-    (type,base_num)
+		(
+		<include refid="base_column"/>
+		)
     values
-    (#{type},#{baseNum})
+    (#{id},#{type},#{baseNum},#{customerId})
   </insert>
+
+	<select id="queryByCustomerId" parameterType="String" resultMap="insurance">
+		select
+		<include refid="base_column"/>
+		from insurance
+		where customer_id = #{customerId}
+	</select>
+
+	<update id="deleteById" parameterType="String">
+    update insurance
+    set customer_id = ""
+    where id = #{id}
+  </update>
+
+	<update id="updateById" parameterType="com.xinggq.customer.entity.Insurance">
+		update insurance
+		<set>
+			<if test="type !=null and type!= '' ">
+				type = #{type},
+			</if>
+			<if test="baseNum !=null and baseNum!= '' ">
+				base_num = #{baseNum},
+			</if>
+		</set>
+		where id = #{id}
+	</update>
 
 </mapper>

@@ -79,6 +79,14 @@ public enum ResponseCode {
    */
   COMPANY_NOT_EXIST("1063","企业信息不存在"),
   /**
+   * 保险类型不合法
+   */
+  INSURANCE_TYPE_LEGAL("1070","保险类型不合法"),
+  /**
+   * 保险信息不存在
+   */
+  INSURANCE_NOT_EXIST("1071","保险信息不存在"),
+  /**
    * 请求方法不正确
    */
   HTTP_METHOD_NOT_SUPPORT("9001", "请求方法不正确"),

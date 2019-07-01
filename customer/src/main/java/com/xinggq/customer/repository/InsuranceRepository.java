@@ -18,4 +18,10 @@ public interface InsuranceRepository {
   List<Insurance> queryById(@Param("insuranceIds") List<String> insuranceIds);
 
   void add(Insurance insurance);
+
+  List<Insurance> queryByCustomerId(@Param("customerId")String customerId);
+
+  void deleteById(@Param("id") String id);
+
+  void updateById(Insurance insurance);
 }
