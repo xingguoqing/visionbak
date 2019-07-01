@@ -7,63 +7,21 @@
   <resultMap type="com.xinggq.customer.entity.User" id="user">
     <id property="id" column="id"/>
     <result column="name" property="name"/>
-    <result column="sex" property="sex"/>
+    <result column="email" property="email"/>
     <result column="phone" property="phone"/>
-    <result column="age" property="age"/>
-    <result column="type" property="type"/>
-    <result column="owner" property="owner"/>
+    <result column="password" property="password"/>
   </resultMap>
 
   <sql id="all_column">
-		id,name,sex,phone,age
+		id,name,email,phone,password
 	</sql>
 
-  <select id="selecByPage" resultMap="user" parameterType="list">
+  <select id="getById" parameterType="String" resultMap="user">
     select
     <include refid="all_column"/>
     from user
-    where owner in
-    <foreach collection="list" index="index" item="item" close=")" open="(" separator=",">
-      #{item}
-    </foreach>
+    where id = #{id}
   </select>
-
-  <insert id="add" parameterType="List">
-    insert into user(
-    name,sex,phone,age,type,owner
-    )
-    values
-    <foreach collection="list" separator="," open="(" close=")" item="item" index="index">
-      #{item.name},#{item.sex},#{item.phone},#{item.age},#{item.type},#{item.owner}
-    </foreach>
-  </insert>
-
-  <update id="updateById">
-    update user
-    <set>
-      <if test="entity.name !=null and entity.name!= '' ">
-        name = #{entity.name},
-      </if>
-      <if test="entity.sex !=null and entity.sex!= '' ">
-        sex = #{entity.sex},
-      </if>
-      <if test="entity.phone !=null and entity.phone!= '' ">
-        phone = #{entity.phone},
-      </if>
-      <if test="entity.age !=null and entity.age!= '' ">
-        age = #{entity.age},
-      </if>
-    </set>
-    where id = #{entity.id} and owner =#{owner}
-  </update>
-
-  <delete id="deleteByIds" >
-    delete from user
-    where owner =#{owner} and id in
-    <foreach collection="list" separator="," open="(" close=")" item="item" index="index">
-      #{item}
-    </foreach>
-  </delete>
 
 
 </mapper>

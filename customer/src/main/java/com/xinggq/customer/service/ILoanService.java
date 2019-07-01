@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface ILoanService {
 
-  List<Loan> queryById(List<Long> loanIds);
+  List<Loan> queryById(List<String> loanIds);
 
   void add(Loan loan);
 }

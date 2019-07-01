@@ -15,7 +15,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface InsuranceRepository {
 
-  List<Insurance> queryById(@Param("insuranceIds") List<Long> insuranceIds);
+  List<Insurance> queryById(@Param("insuranceIds") List<String> insuranceIds);
 
   void add(Insurance insurance);
 }

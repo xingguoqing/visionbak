@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xinggq.customer.repository.CustomerRepository">
+
+  <resultMap type="com.xinggq.customer.entity.Customer" id="user">
+    <id property="id" column="id"/>
+    <result column="name" property="name"/>
+    <result column="sex" property="sex"/>
+    <result column="phone" property="phone"/>
+    <result column="age" property="age"/>
+    <result column="user_id" property="userId"/>
+  </resultMap>
+
+  <sql id="all_column">
+		id,name,sex,phone,age,user_id
+	</sql>
+
+  <select id="selecByPage" resultMap="user" parameterType="String">
+    select
+    <include refid="all_column"/>
+    from customer
+    where user_id = #{userId}
+  </select>
+
+  <insert id="add" parameterType="List">
+    insert into customer(
+    <include refid="all_column"/>
+    )
+    values
+    <foreach collection="list" separator="," open="(" close=")" item="item" index="index">
+      #{item.id},#{item.name},#{item.sex},#{item.phone},#{item.age},#{item.userId}
+    </foreach>
+  </insert>
+
+  <update id="updateById">
+    update customer
+    <set>
+      <if test="customer.name !=null and customer.name!= '' ">
+        name = #{customer.name},
+      </if>
+      <if test="customer.sex !=null and customer.sex!= '' ">
+        sex = #{customer.sex},
+      </if>
+      <if test="customer.phone !=null and customer.phone!= '' ">
+        phone = #{customer.phone},
+      </if>
+      <if test="customer.age !=null and customer.age!= '' ">
+        age = #{customer.age},
+      </if>
+    </set>
+    where id = #{customer.id} and user_id =#{userId}
+  </update>
+
+  <update id="deleteByIds" >
+    update customer
+    set user_id = ""
+    where user_id =#{userId} and id in
+    <foreach collection="list" separator="," open="(" close=")" item="item" index="index">
+      #{item}
+    </foreach>
+  </update>
+
+
+</mapper>

@@ -21,7 +21,7 @@ public class InsuranceServiceImpl implements IInsuranceService {
   private InsuranceRepository insuranceRepository;
 
   @Override
-  public List<Insurance> queryById(List<Long> insuranceIds) {
+  public List<Insurance> queryById(List<String> insuranceIds) {
     if(CollectionUtils.isEmpty(insuranceIds)){
       return new ArrayList<>();
     }

@@ -40,7 +40,11 @@ public enum ResponseCode {
   /**
    * 客户名称不能为空
    */
-  USERNAME_NOT_EMPTY("1030","客户名称不能为空"),
+  CUSTOMERNAME_NOT_EMPTY("1030","客户名称不能为空"),
+  /**
+   * 客户id不能为空
+   */
+  CUSTOMERID_ISNOT_EMPTY("1031","客户id不能为空"),
   /**
    * 分页起始页码不合法
    */
@@ -50,9 +54,26 @@ public enum ResponseCode {
    */
   PAGESIZE_LEGAL("1041","分页每页数据量不合法"),
   /**
+   * 用户id不能为空
+   */
+  USERID_ISNOT_EMPTY("1050","用户id不能为空"),
+
+  /**
+   * 企业id不能为空
+   */
+  COMPANYID_ISNOT_EMPTY("1060","企业id不能为空"),
+  /**
+   * 企业id不能为空
+   */
+  COMPANY_UNABLE_CHANGE("1061","当前企业被多个客户占用，不允许修改"),
+  /**
    * 请求方法不正确
    */
   HTTP_METHOD_NOT_SUPPORT("9001", "请求方法不正确"),
+  /**
+   * 权限不合法
+   */
+  AUTH_LEGAL("9998", "权限不合法"),
   /**
    * 系统异常
    */

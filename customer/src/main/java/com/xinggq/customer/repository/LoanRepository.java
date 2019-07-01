@@ -15,7 +15,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface LoanRepository {
 
-  List<Loan> queryById(@Param("loanIds") List<Long> loanIds);
+  List<Loan> queryById(@Param("loanIds") List<String> loanIds);
 
   void add(Loan loan);
 }

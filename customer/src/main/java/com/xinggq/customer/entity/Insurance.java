@@ -1,17 +1,16 @@
 package com.xinggq.customer.entity;
 
+
 import lombok.Getter;
 import lombok.Setter;
 
-@Setter
 @Getter
+@Setter
 public class Insurance {
 
-  private long id;
+  private String id;
   private String type;
   private String baseNum;
-
-
-
+  private String customerId;
 
 }

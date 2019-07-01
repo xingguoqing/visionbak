@@ -8,7 +8,10 @@ import lombok.Setter;
 @Getter
 public class Loan {
 
-  private long id;
+  private String id;
   private String type;
   private long amount;
+  private String customerId;
+
+
 }

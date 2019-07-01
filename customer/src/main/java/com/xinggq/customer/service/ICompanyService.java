@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface ICompanyService {
 
-  List<Company> queryById(List<Long> ids);
+  List<Company> queryById(List<String> ids);
 
 
   void add(Company company);

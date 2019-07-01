@@ -10,5 +10,5 @@ import java.util.List;
  */
 public interface IInsuranceService {
 
-  List<Insurance> queryById(List<Long> insuranceIds);
+  List<Insurance> queryById(List<String> insuranceIds);
 }

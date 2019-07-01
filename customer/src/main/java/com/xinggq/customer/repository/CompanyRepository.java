@@ -15,7 +15,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CompanyRepository {
 
-  List<Company> querybyId(@Param("ids") List<Long> ids);
+  List<Company> querybyId(@Param("ids") List<String> ids);
 
   void add(Company company);
 

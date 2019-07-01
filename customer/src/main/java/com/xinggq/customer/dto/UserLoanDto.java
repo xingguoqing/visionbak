@@ -2,7 +2,7 @@ package com.xinggq.customer.dto;
 
 
 import com.xinggq.customer.entity.Loan;
-import com.xinggq.customer.entity.User;
+import com.xinggq.customer.entity.Customer;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,7 +15,7 @@ import lombok.Setter;
 @Getter
 public class UserLoanDto {
 
-  private User user;
+  private Customer user;
   private Loan loan;
 
 }

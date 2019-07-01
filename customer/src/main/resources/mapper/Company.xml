@@ -24,12 +24,11 @@
     </foreach>
   </select>
 
-  <insert id="add" parameterType="com.xinggq.customer.entity.Company" useGeneratedKeys="true"
-    keyProperty="id">
+  <insert id="add" parameterType="com.xinggq.customer.entity.Company">
     insert into company
-    (name,address)
+    <include refid="base_column"/>
     values
-    (#{name},#{address})
+    (#{id},#{name},#{address})
   </insert>
 
   <update id="updateById" parameterType="com.xinggq.customer.entity.Company">

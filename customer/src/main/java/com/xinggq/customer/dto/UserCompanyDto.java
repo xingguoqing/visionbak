@@ -1,7 +1,7 @@
 package com.xinggq.customer.dto;
 
 import com.xinggq.customer.entity.Company;
-import com.xinggq.customer.entity.User;
+import com.xinggq.customer.entity.Customer;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,7 +14,7 @@ import lombok.Setter;
 @Getter
 public class UserCompanyDto {
 
-  private User user;
+  private Customer user;
   private Company company;
 
 }

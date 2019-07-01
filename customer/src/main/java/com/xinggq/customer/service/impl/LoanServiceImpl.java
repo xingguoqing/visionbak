@@ -22,7 +22,7 @@ public class LoanServiceImpl implements ILoanService {
   private LoanRepository loanRepository;
 
   @Override
-  public List<Loan> queryById(List<Long> loanIds) {
+  public List<Loan> queryById(List<String> loanIds) {
     if(CollectionUtils.isEmpty(loanIds)){
       return new ArrayList<>();
     }

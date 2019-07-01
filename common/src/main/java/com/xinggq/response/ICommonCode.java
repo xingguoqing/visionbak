@@ -27,7 +27,11 @@ public interface ICommonCode {
   /**
    * 客户名称不能为空
    */
-  String USERNAME_NOT_EMPTY = "1030";
+  String CUSTOMERNAME_NOT_EMPTY = "1030";
+  /**
+   * 客户id不能为空
+   */
+  String CUSTOMERID_ISNOT_EMPTY = "1031";
   /**
    * 分页起始页码不合法
    */
@@ -36,10 +40,19 @@ public interface ICommonCode {
    * 分页每页数据量不合法
    */
   String PAGESIZE_LEGAL = "1041";
+
   /**
-   * 用户id不能为空
+   * 企业id不能为空
    */
-  String USERID_ISNOT_EMPTY = "1050";
+  String COMPANYID_ISNOT_EMPTY = "1060";
+  /**
+   * 当前企业被多个客户占用，不允许修改
+   */
+  String COMPANY_UNABLE_CHANGE = "1061";
+  /**
+   * 权限不合法
+   */
+  String AUTH_LEGAL = "9998";
   /**
    * 系统异常
    */

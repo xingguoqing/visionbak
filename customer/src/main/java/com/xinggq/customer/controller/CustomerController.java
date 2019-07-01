@@ -2,13 +2,16 @@ package com.xinggq.customer.controller;
 
 import com.github.pagehelper.PageInfo;
 import com.xinggq.customer.dto.PageQueryDto;
-import com.xinggq.customer.entity.User;
-import com.xinggq.customer.service.IUserService;
+import com.xinggq.customer.entity.Customer;
+import com.xinggq.customer.service.ICustomerService;
+import com.xinggq.exception.BusiExceptionUtils;
 import com.xinggq.response.AbstractResponse;
+import com.xinggq.response.ICommonCode;
 import com.xinggq.response.ResponseCode;
 import java.util.Arrays;
 import java.util.List;
 import javax.validation.Valid;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,12 +25,12 @@ import com.xinggq.response.ICommonResponse;
  * @description
  */
 @RestController
-@RequestMapping("/user")
-public class UserController {
+@RequestMapping("/customer")
+public class CustomerController {
 
 
   @Autowired
-  private IUserService userService;
+  private ICustomerService customerService;
 
 
   @PostMapping("/page_query")
@@ -35,25 +38,28 @@ public class UserController {
 
     Integer pageNum = dto.getPageNum();
     Integer pageSize = dto.getPageSize();
-    PageInfo<User> users = userService.selecByPage(pageNum, pageSize);
-    return AbstractResponse.getSuccessResp(users);
+    PageInfo<Customer> customers = customerService.selecByPage(pageNum, pageSize);
+    return AbstractResponse.getSuccessResp(customers);
   }
 
   @PostMapping("/add")
-  public ICommonResponse add(@Valid @RequestBody User user) {
-    userService.add(Arrays.asList(user));
+  public ICommonResponse add(@Valid @RequestBody Customer customer) {
+    customerService.add(Arrays.asList(customer));
     return AbstractResponse.getSuccessResp(ResponseCode.SUCCESS);
   }
 
-  @PostMapping("/update")
-  public ICommonResponse update(@Valid @RequestBody User user) {
-    userService.updateById(user);
+  @PostMapping("/update_by_id")
+  public ICommonResponse updateById(@Valid @RequestBody Customer customer) {
+    if(StringUtils.isEmpty(customer.getId())){
+      BusiExceptionUtils.wrapBusiException(ICommonCode.CUSTOMERID_ISNOT_EMPTY);
+    }
+    customerService.updateById(customer);
     return AbstractResponse.getSuccessResp(ResponseCode.SUCCESS);
   }
 
   @PostMapping("/delete")
-  public ICommonResponse delete(@Valid @RequestBody List<Long> usersId) {
-    userService.deleteByIds(usersId);
+  public ICommonResponse delete(@Valid @RequestBody List<String> customerIds) {
+    customerService.deleteByIds(customerIds);
     return AbstractResponse.getSuccessResp(ResponseCode.SUCCESS);
   }
 
