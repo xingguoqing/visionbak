@@ -69,6 +69,14 @@ public interface ICommonCode {
    */
   String INSURANCE_NOT_EXIST = "1071";
   /**
+   * 贷款信息不存在
+   */
+  String LOAN_NOT_EXIST = "1080";
+  /**
+   * 贷款类型不合法
+   */
+  String LOAN_TYPE_LEGAL = "1081";
+  /**
    * 请求数据转换失败
    */
   String REQUEST_PARSE_LEGAL = "9997";

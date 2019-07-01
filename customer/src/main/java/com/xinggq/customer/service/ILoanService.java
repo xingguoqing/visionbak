@@ -1,5 +1,6 @@
 package com.xinggq.customer.service;
 
+import com.xinggq.customer.entity.Insurance;
 import com.xinggq.customer.entity.Loan;
 import java.util.List;
 
@@ -13,4 +14,10 @@ public interface ILoanService {
   List<Loan> queryById(List<String> loanIds);
 
   void add(Loan loan);
+
+  List<Insurance> queryByCustomerId(String customerId);
+
+  void deleteById(String id);
+
+  void updateById(Loan loan);
 }

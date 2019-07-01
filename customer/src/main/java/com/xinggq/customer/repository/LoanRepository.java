@@ -1,5 +1,6 @@
 package com.xinggq.customer.repository;
 
+import com.xinggq.customer.entity.Insurance;
 import com.xinggq.customer.entity.Loan;
 import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
@@ -18,4 +19,10 @@ public interface LoanRepository {
   List<Loan> queryById(@Param("loanIds") List<String> loanIds);
 
   void add(Loan loan);
+
+  List<Insurance> queryByCustomerId(@Param("customerId") String customerId);
+
+  void deleteById(@Param("id") String id);
+
+  void updateById(Loan loan);
 }

@@ -87,6 +87,14 @@ public enum ResponseCode {
    */
   INSURANCE_NOT_EXIST("1071","保险信息不存在"),
   /**
+   * 贷款信息不存在
+   */
+  LOAN_NOT_EXIST("1080","贷款信息不存在"),
+  /**
+   * 贷款类型不合法
+   */
+  LOAN_TYPE_LEGAL("1081","贷款类型不合法"),
+  /**
    * 请求方法不正确
    */
   HTTP_METHOD_NOT_SUPPORT("9001", "请求方法不正确"),

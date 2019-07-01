@@ -1,6 +1,5 @@
 package com.xinggq.customer.controller;
 
-import com.xinggq.customer.dto.UserInsuranceDto;
 import com.xinggq.customer.entity.Customer;
 import com.xinggq.customer.entity.Insurance;
 import com.xinggq.customer.service.ICustomerService;
@@ -11,7 +10,6 @@ import com.xinggq.response.ICommonCode;
 import com.xinggq.response.ICommonResponse;
 import com.xinggq.response.ResponseCode;
 import java.util.List;
-import java.util.stream.Collectors;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

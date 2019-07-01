@@ -1,36 +1,66 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
- PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xinggq.customer.repository.LoanRepository">
 
-	<resultMap type="com.xinggq.customer.entity.Loan" id="loan">
-		<id property="id" column="id" />
-		<result column="type" property="type"/>
-		<result column="amount" property="amount"/>
-	</resultMap>
+  <resultMap type="com.xinggq.customer.entity.Loan" id="loan">
+    <id property="id" column="id"/>
+    <result column="type" property="type"/>
+    <result column="amount" property="amount"/>
+    <result column="customer_id" property="customerId"/>
+  </resultMap>
 
-	<sql id="base_column">
-		id,type,amount
+  <sql id="base_column">
+		id,type,amount,customer_id
 	</sql>
 
-	<select id="queryById" resultMap="loan">
-		select
-		<include refid="base_column"/>
-		from loan
-		where id in
-		<foreach collection="loanIds" item="item" separator="," open="(" close=")" index="index">
-			#{item}
-		</foreach>
-	</select>
+  <select id="queryById" resultMap="loan">
+    select
+    <include refid="base_column"/>
+    from loan
+    where id in
+    <foreach collection="loanIds" item="item" separator="," open="(" close=")" index="index">
+      #{item}
+    </foreach>
+  </select>
 
-	<insert id="add" parameterType="com.xinggq.customer.entity.Loan" useGeneratedKeys="true"
-		keyProperty="id">
-		insert into loan
-		(type,amount)
-		values
-		(#{type},#{amount})
+  <insert id="add" parameterType="com.xinggq.customer.entity.Loan" useGeneratedKeys="true"
+    keyProperty="id">
+    insert into loan
+    (
+    <include refid="base_column"/>
+    )
+    values
+    (#{id},#{type},#{amount},#{customerId})
 
-	</insert>
+  </insert>
+
+  <select id="queryByCustomerId" parameterType="String" resultMap="loan">
+    select
+    <include refid="base_column"/>
+    from loan
+    where customer_id = #{customerId}
+  </select>
+
+  <update id="deleteById" parameterType="String">
+		update loan
+    set customer_id = ""
+    where id = #{id}
+	</update>
+
+  <update id="updateById" parameterType="com.xinggq.customer.entity.Loan">
+    update loan
+    <set>
+      <if test="type !=null and type!= '' ">
+        type = #{type},
+      </if>
+      <if test="amount !=null and amount!= '' ">
+        amount = #{amount},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+
 
 </mapper>
