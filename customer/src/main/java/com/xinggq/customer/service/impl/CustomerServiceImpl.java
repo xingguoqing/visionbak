@@ -6,10 +6,8 @@ import com.xinggq.customer.common.LocalCach;
 import com.xinggq.customer.entity.Customer;
 import com.xinggq.customer.repository.CustomerRepository;
 import com.xinggq.customer.service.ICustomerService;
-
 import com.xinggq.utils.UUIDUtils;
 import java.util.List;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -48,6 +46,12 @@ public class CustomerServiceImpl implements ICustomerService {
   @Override
   public void deleteByIds(List<String> ids) {
     customerRepository.deleteByIds(ids,LocalCach.getUserId());
+  }
+
+  @Override
+  public List<Customer> getAuthCustomers() {
+    String userId = LocalCach.getUserId();
+    return customerRepository.getAuthCustomersByUserId(userId);
   }
 
   private void initCustomers(List<Customer> customers) {

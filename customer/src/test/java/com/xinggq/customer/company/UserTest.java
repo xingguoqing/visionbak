@@ -4,9 +4,10 @@ import com.xinggq.customer.CustomerApplication;
 import com.xinggq.customer.controller.CustomerController;
 import com.xinggq.customer.dto.PageQueryDto;
 import com.xinggq.customer.entity.Customer;
+import com.xinggq.customer.service.ICustomerService;
 import com.xinggq.response.ICommonResponse;
-import java.lang.reflect.Array;
 import java.util.Arrays;
+import java.util.List;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,9 @@ public class UserTest {
 
   @Autowired
   private CustomerController customerController;
+
+  @Autowired
+  private ICustomerService customerService;
 
   @Test
   public void selecByPage(){
@@ -62,6 +66,12 @@ public class UserTest {
   @Test
   public void delete(){
     ICommonResponse commonResponse = customerController.delete(Arrays.asList("1"));
+    System.out.println();
+  }
+
+  @Test
+  public void getAuthCustomers(){
+    List<Customer> customers = customerService.getAuthCustomers();
     System.out.println();
   }
 

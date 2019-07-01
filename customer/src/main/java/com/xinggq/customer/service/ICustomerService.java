@@ -26,4 +26,9 @@ public interface ICustomerService extends IBaseService<Customer> {
    */
   void deleteByIds(List<String> ids);
 
+  /**
+   *
+   * @return
+   */
+  List<Customer> getAuthCustomers();
 }

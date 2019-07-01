@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xinggq.customer.repository.CustomerRepository">
 
-  <resultMap type="com.xinggq.customer.entity.Customer" id="user">
+  <resultMap type="com.xinggq.customer.entity.Customer" id="customer">
     <id property="id" column="id"/>
     <result column="name" property="name"/>
     <result column="sex" property="sex"/>
@@ -17,7 +17,7 @@
 		id,name,sex,phone,age,user_id
 	</sql>
 
-  <select id="selecByPage" resultMap="user" parameterType="String">
+  <select id="selecByPage" resultMap="customer" parameterType="String">
     select
     <include refid="all_column"/>
     from customer
@@ -61,6 +61,13 @@
       #{item}
     </foreach>
   </update>
+
+  <select id="getAuthCustomersByUserId" parameterType="String" resultMap="customer">
+    select
+    <include refid="all_column"/>
+    from customer
+    where user_id = #{userId}
+  </select>
 
 
 </mapper>
