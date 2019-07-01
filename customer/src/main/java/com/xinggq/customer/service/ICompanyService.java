@@ -16,4 +16,8 @@ public interface ICompanyService {
   void add(Company company);
 
   void updateById(Company company);
+
+  List<Company> queryByCustomerId(String customerId);
+
+  void deleteById(String id);
 }

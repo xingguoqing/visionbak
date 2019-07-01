@@ -69,5 +69,12 @@
     where user_id = #{userId}
   </select>
 
+  <select id="getById" resultMap="customer">
+    select
+    <include refid="all_column"/>
+    from customer
+    where id = #{id} and user_id = #{userId}
+  </select>
+
 
 </mapper>

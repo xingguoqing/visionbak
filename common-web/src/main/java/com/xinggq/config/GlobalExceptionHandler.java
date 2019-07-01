@@ -2,8 +2,10 @@ package com.xinggq.config;
 
 import com.alibaba.fastjson.JSON;
 import com.google.common.base.Strings;
+import com.xinggq.exception.BusiExceptionUtils;
 import com.xinggq.exception.BusinessRuntimeException;
 import com.xinggq.response.AbstractResponse;
+import com.xinggq.response.ICommonCode;
 import com.xinggq.response.ICommonResponse;
 import com.xinggq.response.ResponseCode;
 import com.xinggq.utils.Constants;
@@ -97,7 +99,7 @@ public class GlobalExceptionHandler {
 //  }
 
   /**
-   * 记录数据转换错误； <li>JSON转换错误</>
+   * 记录数据转换错误； <li>JSON转换错误</>   下面的那个异常抛的有问题
    */
   @ResponseStatus(HttpStatus.BAD_REQUEST)
   @ExceptionHandler(HttpMessageNotReadableException.class)
@@ -105,5 +107,6 @@ public class GlobalExceptionHandler {
       HttpMessageNotReadableException exception) {
     logger.error("请求{}报错，数据格式转换失败。错误明细:\n{}", request.getRequestURI(), exception.getMessage(),
         exception);
+    BusiExceptionUtils.wrapBusiException(ICommonCode.REQUEST_PARSE_LEGAL);
   }
 }

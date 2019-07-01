@@ -46,6 +46,10 @@ public enum ResponseCode {
    */
   CUSTOMERID_ISNOT_EMPTY("1031","客户id不能为空"),
   /**
+   * 未找到关联客户信息
+   */
+  CUSTOMERID_NOT_EXIST("1032","未找到关联客户信息"),
+  /**
    * 分页起始页码不合法
    */
   PAGENUM_LEGAL("1040","分页起始页码不合法"),
@@ -63,13 +67,25 @@ public enum ResponseCode {
    */
   COMPANYID_ISNOT_EMPTY("1060","企业id不能为空"),
   /**
-   * 企业id不能为空
+   * 企业名称不能为空
    */
-  COMPANY_UNABLE_CHANGE("1061","当前企业被多个客户占用，不允许修改"),
+  COMPANYNAME_ISNOT_EMPTY("1061","企业名称不能为空"),
+  /**
+   * 当前企业被多个客户占用，不允许修改
+   */
+  COMPANY_UNABLE_CHANGE("1062","当前企业被多个客户占用，不允许修改"),
+  /**
+   * 企业信息不存在
+   */
+  COMPANY_NOT_EXIST("1063","企业信息不存在"),
   /**
    * 请求方法不正确
    */
   HTTP_METHOD_NOT_SUPPORT("9001", "请求方法不正确"),
+  /**
+   * 请求数据转换失败
+   */
+  REQUEST_PARSE_LEGAL("9997", "请求数据转换失败"),
   /**
    * 权限不合法
    */

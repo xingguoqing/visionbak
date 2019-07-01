@@ -33,6 +33,10 @@ public interface ICommonCode {
    */
   String CUSTOMERID_ISNOT_EMPTY = "1031";
   /**
+   * 未找到关联客户信息
+   */
+  String CUSTOMERID_NOT_EXIST = "1032";
+  /**
    * 分页起始页码不合法
    */
   String PAGENUM_LEGAL = "1040";
@@ -46,9 +50,21 @@ public interface ICommonCode {
    */
   String COMPANYID_ISNOT_EMPTY = "1060";
   /**
+   * 企业名称不能为空
+   */
+  String COMPANYNAME_ISNOT_EMPTY = "1061";
+  /**
    * 当前企业被多个客户占用，不允许修改
    */
-  String COMPANY_UNABLE_CHANGE = "1061";
+  String COMPANY_UNABLE_CHANGE = "1062";
+  /**
+   * 企业信息不存在
+   */
+  String COMPANY_NOT_EXIST = "1063";
+  /**
+   * 请求数据转换失败
+   */
+  String REQUEST_PARSE_LEGAL = "9997";
   /**
    * 权限不合法
    */

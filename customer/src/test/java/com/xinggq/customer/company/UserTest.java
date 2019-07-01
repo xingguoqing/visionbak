@@ -75,4 +75,10 @@ public class UserTest {
     System.out.println();
   }
 
+  @Test
+  public void getById(){
+    Customer customers = customerService.getById("5");
+    System.out.println();
+  }
+
 }

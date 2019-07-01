@@ -8,10 +8,11 @@
     <id property="id" column="id"/>
     <result column="name" property="name"/>
     <result column="address" property="address"/>
+    <result column="customer_id" property="customerId"/>
   </resultMap>
 
   <sql id="base_column">
-		id,name,address
+		id,name,address,customer_id
 	</sql>
 
   <select id="querybyId" parameterType="List" resultMap="company">
@@ -26,9 +27,13 @@
 
   <insert id="add" parameterType="com.xinggq.customer.entity.Company">
     insert into company
+    (
     <include refid="base_column"/>
+    )
     values
-    (#{id},#{name},#{address})
+    (
+    #{id},#{name},#{address},#{customerId}
+    )
   </insert>
 
   <update id="updateById" parameterType="com.xinggq.customer.entity.Company">
@@ -41,6 +46,19 @@
         address = #{address},
       </if>
     </set>
+    where id = #{id}
+  </update>
+
+  <select id="queryByCustomerId" parameterType="String" resultMap="company">
+    select
+    <include refid="base_column"/>
+    from company
+    where customer_id = #{customerId}
+  </select>
+
+  <update id="deleteById" parameterType="String">
+    update company
+    set customer_id = ""
     where id = #{id}
   </update>
 

@@ -25,4 +25,6 @@ public interface CustomerRepository {
   void deleteByIds(@Param("list")List<String> ids,@Param("userId")  String userId);
 
   List<Customer> getAuthCustomersByUserId(@Param("userId") String userId);
+
+  Customer getById(@Param("id") String customerId,@Param("userId") String userId);
 }

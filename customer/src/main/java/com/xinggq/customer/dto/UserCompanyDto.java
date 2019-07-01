@@ -12,7 +12,7 @@ import lombok.Setter;
  */
 @Setter
 @Getter
-public class UserCompanyDto {
+public class UserCompanyDto extends Company{
 
   private Customer user;
   private Company company;

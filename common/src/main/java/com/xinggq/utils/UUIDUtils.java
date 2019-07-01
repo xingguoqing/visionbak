@@ -13,7 +13,7 @@ public class UUIDUtils {
    * 生成32位UUID
    * @return
    */
-  public static String genUUID(){
+  public static String getUUID(){
     String uuid = UUID.randomUUID().toString();
     uuid = uuid.replace("-", "");
     return uuid;

@@ -20,4 +20,8 @@ public interface CompanyRepository {
   void add(Company company);
 
   void updateById(Company company);
+
+  List<Company> queryByCustomerId(@Param("customerId") String customerId);
+
+  void deleteById(@Param("id")String id);
 }

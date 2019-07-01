@@ -31,4 +31,6 @@ public interface ICustomerService extends IBaseService<Customer> {
    * @return
    */
   List<Customer> getAuthCustomers();
+
+  Customer getById(String customerId);
 }

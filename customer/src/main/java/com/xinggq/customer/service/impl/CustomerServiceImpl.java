@@ -54,9 +54,14 @@ public class CustomerServiceImpl implements ICustomerService {
     return customerRepository.getAuthCustomersByUserId(userId);
   }
 
+  @Override
+  public Customer getById(String customerId) {
+    return customerRepository.getById(customerId,LocalCach.getUserId());
+  }
+
   private void initCustomers(List<Customer> customers) {
     customers.stream().forEach(e -> {
-      e.setId(UUIDUtils.genUUID());
+      e.setId(UUIDUtils.getUUID());
       e.setUserId(LocalCach.getUserId());
     });
   }
