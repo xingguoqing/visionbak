@@ -1,4 +1,4 @@
-package com.xinggq.customer.entity;
+package com.xinggq.customerapi.entity;
 
 
 import lombok.Getter;

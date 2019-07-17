@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/loan")
-public class UserLoanController {
+public class LoanController {
 
 
   @Autowired

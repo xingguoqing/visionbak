@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xinggq.customer.repository.UserRepository">
 
-  <resultMap type="com.xinggq.customer.entity.User" id="user">
+  <resultMap type="com.xinggq.customerapi.entity.User" id="user">
     <id property="id" column="id"/>
     <result column="name" property="name"/>
     <result column="email" property="email"/>
@@ -21,6 +21,13 @@
     <include refid="all_column"/>
     from user
     where id = #{id}
+  </select>
+
+  <select id="getByPhone" parameterType="String" resultMap="user">
+    select
+    <include refid="all_column"/>
+    from user
+    where phone = #{phone}
   </select>
 
 

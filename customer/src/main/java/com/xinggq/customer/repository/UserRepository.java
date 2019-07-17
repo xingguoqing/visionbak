@@ -1,6 +1,6 @@
 package com.xinggq.customer.repository;
 
-import com.xinggq.customer.entity.User;
+import com.xinggq.customerapi.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -14,4 +14,6 @@ import org.springframework.stereotype.Repository;
 public interface UserRepository {
 
   User getById(String id);
+
+  User getByPhone(String phone);
 }

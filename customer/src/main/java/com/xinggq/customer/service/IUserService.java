@@ -1,6 +1,7 @@
 package com.xinggq.customer.service;
 
-import com.xinggq.customer.entity.User;
+
+import com.xinggq.customerapi.entity.User;
 
 /**
  * @author xinggq
@@ -10,5 +11,7 @@ import com.xinggq.customer.entity.User;
 public interface IUserService {
 
   User getById(String id);
+
+  User getByPhone(String phone);
 
 }

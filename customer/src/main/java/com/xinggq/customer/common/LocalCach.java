@@ -1,7 +1,7 @@
 package com.xinggq.customer.common;
 
 
-import com.xinggq.customer.entity.User;
+import com.xinggq.customerapi.entity.User;
 
 /**
  * @author xinggq
