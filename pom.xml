@@ -18,6 +18,7 @@
     <module>eureka</module>
     <module>pattern</module>
     <module>junit4</module>
+    <module>file-process</module>
   </modules>
 
 
