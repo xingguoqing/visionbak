@@ -19,6 +19,7 @@
     <module>pattern</module>
     <module>junit4</module>
     <module>file-process</module>
+    <module>effective-java</module>
   </modules>
 
 

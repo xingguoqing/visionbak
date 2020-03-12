@@ -3,6 +3,7 @@ package com.xinggq.file.utils;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.imageio.stream.FileImageOutputStream;
@@ -51,5 +52,22 @@ public class ImageFilePaser {
       ex.printStackTrace();
     }
   }
+
+  public static byte[] imageToBytes(File file)
+  {
+    FileInputStream fin;
+    byte[] bytes = null;
+    try {
+      fin = new FileInputStream(file);
+      bytes  = new byte[fin.available()];
+      //将文件内容写入字节数组
+      fin.read(bytes);
+      fin.close();
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    return bytes;
+  }
+
 
 }

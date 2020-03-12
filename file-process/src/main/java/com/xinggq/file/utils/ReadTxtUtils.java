@@ -1,10 +1,15 @@
 package com.xinggq.file.utils;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.google.gson.Gson;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 
 /**
  * @author xinggq
@@ -12,6 +17,19 @@ import java.io.InputStreamReader;
  * @description 读取txt文件的工具类
  */
 public class ReadTxtUtils {
+
+  public static void main(String[] args) throws UnsupportedEncodingException {
+//    String a = "[{\"card_id\":\"pDe7ajrY4G5z_SIDSauDkLSuF9NI\",\"encrypt_code\":\"O/mPnGTpBu22a1szmK2ogzhFPBh9eYzv2p70L8yzyymSPw4zpNYIVN0JMyArQ9smWamkIJmNOKOqeuDVUynXGoET/M5xpJ226AyphU4tjgdjCI4LuGSoC6vzuiZAb60m\"}]";
+//    JSONArray picArray = JSONArray.parseArray(a);
+//    JSONObject jsonObject = new JSONObject();
+//    jsonObject.put("item_list",picArray);
+//    System.out.println(jsonObject.toJSONString());
+    try {
+      System.out.println(URLEncoder.encode("1231231", "UTF-8"));
+    } catch (UnsupportedEncodingException e) {
+//      BusiExceptionUtils.wrapBusiException(ICommonResponse.FAIL_CODE, "URL编码异常");
+    }
+  }
 
 
   /**
