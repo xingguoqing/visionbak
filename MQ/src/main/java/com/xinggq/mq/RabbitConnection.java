@@ -10,12 +10,6 @@ import com.rabbitmq.client.ConnectionFactory;
  */
 public class RabbitConnection {
 
-  private static String userName = "guest";
-  private static String password = "guest";
-  private static String vHost = "/";
-  private static String host = "104.168.165.180";
-  private static int port = 5673;
-
 
   /**
    * 创建rabbitmq连接

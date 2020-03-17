@@ -17,8 +17,6 @@ public class Message {
 
   private static String queueName = "test";
 
-
-
   /**
    * 推送消息
    */
