@@ -1,4 +1,4 @@
-package com.xinggq.mq;
+package com.xinggq.mq.test;
 
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
@@ -6,23 +6,28 @@ import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.DefaultConsumer;
 import com.rabbitmq.client.Envelope;
 import java.io.IOException;
-import java.util.Date;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  * @author xinggq
  * @date 2019-07-05 13:41
  * @description
  */
-public class Message {
+@Component
+public class MessageProcesser {
 
   private static String queueName = "test";
+
+  @Autowired
+  private RabbitConnection rabbitConnection;
 
   /**
    * 推送消息
    */
-  public static void Publisher() {
+  public void publisher(String content) {
     // 创建一个连接
-    Connection conn = RabbitConnection.GetRabbitConnection2();
+    Connection conn = rabbitConnection.GetRabbitConnection();
     if (conn != null) {
       try {
         // 创建通道
@@ -30,7 +35,6 @@ public class Message {
         // 声明队列【参数说明：参数一：队列名称，参数二：是否持久化；参数三：是否独占模式；参数四：消费者断开连接时是否删除队列；参数五：消息其他参数】
         channel.queueDeclare(queueName, false, false, false, null);
 //        String content = String.format("当前时间：%s", new Date().getTime());
-        String content = String.format("当前时间：%s",System.currentTimeMillis());
         // 发送内容【参数说明：参数一：交换机名称；参数二：队列名称，参数三：消息的其他属性-routing headers，此属性为MessageProperties.PERSISTENT_TEXT_PLAIN用于设置纯文本消息存储到硬盘；参数四：消息主体】
         channel.basicPublish("", queueName, null, content.getBytes("UTF-8"));
         System.out.println("已发送消息：" + content);
@@ -46,9 +50,9 @@ public class Message {
   /**
    * 消费消息
    */
-  public static void Consumer() {
+  public void consumer() {
     // 创建一个连接
-    Connection conn = RabbitConnection.GetRabbitConnection();
+    Connection conn = rabbitConnection.GetRabbitConnection();
     if (conn != null) {
       try {
         // 创建通道
