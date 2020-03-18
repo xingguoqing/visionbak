@@ -5,6 +5,7 @@ import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.DefaultConsumer;
 import com.rabbitmq.client.Envelope;
+import com.rabbitmq.client.MessageProperties;
 import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -33,10 +34,10 @@ public class MessageProcesser {
         // 创建通道
         Channel channel = conn.createChannel();
         // 声明队列【参数说明：参数一：队列名称，参数二：是否持久化；参数三：是否独占模式；参数四：消费者断开连接时是否删除队列；参数五：消息其他参数】
-        channel.queueDeclare(queueName, false, false, false, null);
+        channel.queueDeclare(queueName, true, false, false, null);
 //        String content = String.format("当前时间：%s", new Date().getTime());
         // 发送内容【参数说明：参数一：交换机名称；参数二：队列名称，参数三：消息的其他属性-routing headers，此属性为MessageProperties.PERSISTENT_TEXT_PLAIN用于设置纯文本消息存储到硬盘；参数四：消息主体】
-        channel.basicPublish("", queueName, null, content.getBytes("UTF-8"));
+        channel.basicPublish("", queueName, MessageProperties.PERSISTENT_TEXT_PLAIN, content.getBytes("UTF-8"));
         System.out.println("已发送消息：" + content);
         // 关闭连接
         channel.close();
